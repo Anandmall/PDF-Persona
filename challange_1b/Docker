@@ -1,0 +1,15 @@
+# Use AMD64 CPU-only Python base image
+FROM --platform=linux/amd64 python:3.10-slim
+
+# Create working directory
+WORKDIR /app
+
+# Copy code
+COPY main.py .
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Default command: run the main script
+CMD ["python", "main.py"]
